@@ -38,7 +38,7 @@ from_bytes_crc32(uint32_t &value, Container &bytes, std::size_t &current_index,
     return false;
   }
 
-  get_aligned<O>(value, &bytes[0], current_index);
+  get_aligned<O>(value, (uint8_t*) &bytes[0], current_index);
 
   update_value_based_on_alpaca_endian_rules<O, uint32_t>(value);
   current_index += num_bytes_to_read;
@@ -55,7 +55,7 @@ from_bytes_crc32(uint32_t &value, Container &bytes, std::size_t &current_index,
     return false;
   }
 
-  get_aligned<O>(value, &bytes[0], current_index);
+  get_aligned<O>(value, (uint8_t*) &bytes[0], current_index);
 
   update_value_based_on_alpaca_endian_rules<O, uint32_t>(value);
   current_index += num_bytes_to_read;
@@ -108,7 +108,7 @@ from_bytes(T &value, Container &bytes, std::size_t &current_index,
     return false;
   }
 
-  get_aligned<O>(value, &bytes[0], current_index);
+  get_aligned<O>(value, (uint8_t*) &bytes[0], current_index);
   current_index += num_bytes_to_read;
   update_value_based_on_alpaca_endian_rules<O, T>(value);
   return true;
@@ -161,7 +161,7 @@ from_bytes(T &value, Container &bytes, std::size_t &current_index,
     return false;
   }
 
-  get_aligned<O>(value, &bytes[0], current_index);
+  get_aligned<O>(value, (uint8_t*) &bytes[0], current_index);
   current_index += num_bytes_to_read;
   update_value_based_on_alpaca_endian_rules<O, T>(value);
   return true;
@@ -260,7 +260,7 @@ from_bytes(T &value, Container &bytes, std::size_t &current_index,
       /// TODO: report error
       return false;
     }
-    get_aligned<O>(value, &bytes[0], current_index);
+    get_aligned<O>(value, (uint8_t*) &bytes[0], current_index);
     current_index += num_bytes_to_read;
   } else {
     value = decode_varint<T>(bytes, current_index);
@@ -309,7 +309,7 @@ from_bytes(T &value, Container &bytes, std::size_t &current_index,
       /// TODO: report error
       return false;
     }
-    get_aligned<O>(value, &bytes[0], current_index);
+    get_aligned<O>(value, (uint8_t*) &bytes[0], current_index);
     current_index += num_bytes_to_read;
   } else {
     value = decode_varint<T>(bytes, current_index);
