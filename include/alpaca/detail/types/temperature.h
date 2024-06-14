@@ -1,5 +1,5 @@
 #pragma once
-#if !defined(ALPACA_EXCLUDE_SUPPORT_STD_TEMPERATURE_PTR) && !defined(ESP_32)
+#if defined(ALPACA_INCLUDE_TEMPERATURE_FIELD)
 #include <alpaca/detail/to_bytes.h>
 #include <alpaca/detail/type_info.h>
 #include <memory>
