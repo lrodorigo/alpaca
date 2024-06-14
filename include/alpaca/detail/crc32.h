@@ -69,7 +69,7 @@
 // no prefetching
 #define ALPACA_PREFETCH(location) ;
 #endif
-#elif defined(__ARM_ARCH_8M_MAIN__)
+#elif defined(__ARM_ARCH_8M_MAIN__) || defined(ESP32)
 #define __ALPACA_BYTE_ORDER __ALPACA_LITTLE_ENDIAN
 #define ALPACA_PREFETCH(location) __builtin_prefetch(location)
 #else
