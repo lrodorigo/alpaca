@@ -8,15 +8,15 @@ namespace alpaca {
 
 namespace detail {
 
-template <typename T> bool CHECK_BIT(T &value, uint8_t pos) {
+template <typename T> bool ALPACA_CHECK_BIT(T &value, uint8_t pos) {
   return ((value) & (T{1} << (pos)));
 }
 
-template <typename T> void SET_BIT(T &value, uint8_t pos) {
+template <typename T> void ALPACA_SET_BIT(T &value, uint8_t pos) {
   value = value | T{1} << pos;
 }
 
-template <typename T> void RESET_BIT(T &value, uint8_t pos) {
+template <typename T> void ALPACA_RESET_BIT(T &value, uint8_t pos) {
   value = value & ~(T{1} << pos);
 }
 
@@ -26,7 +26,7 @@ bool encode_varint_firstbyte_6(int_t &value, Container &output,
   uint8_t octet = 0;
   if (value < 0) {
     value *= -1;
-    SET_BIT(octet, 7);
+      ALPACA_SET_BIT(octet, 7);
   }
   // While more than 7 bits of data are left, occupy the last output byte
   // and set the next byte flag
@@ -61,13 +61,13 @@ decode_varint_firstbyte_6(Container &input, std::size_t &current_index,
                           bool &negative, bool &multibyte) {
   int octet = 0;
   int_t current = input[current_index];
-  if (CHECK_BIT(current, 7)) {
+  if (ALPACA_CHECK_BIT(current, 7)) {
     // negative number
-    RESET_BIT(current, 7);
+      ALPACA_RESET_BIT(current, 7);
     negative = true;
   }
-  if (CHECK_BIT(current, 6)) {
-    RESET_BIT(current, 6);
+  if (ALPACA_CHECK_BIT(current, 6)) {
+      ALPACA_RESET_BIT(current, 6);
     multibyte = true;
   }
 
@@ -87,13 +87,13 @@ decode_varint_firstbyte_6(Container &input, std::size_t &current_index,
   uint8_t byte = static_cast<uint8_t>(current_byte);
 
   int_t current = byte;
-  if (CHECK_BIT(current, 7)) {
+  if (ALPACA_CHECK_BIT(current, 7)) {
     // negative number
-    RESET_BIT(current, 7);
+      ALPACA_RESET_BIT(current, 7);
     negative = true;
   }
-  if (CHECK_BIT(current, 6)) {
-    RESET_BIT(current, 6);
+  if (ALPACA_CHECK_BIT(current, 6)) {
+      ALPACA_RESET_BIT(current, 6);
     multibyte = true;
   }
 

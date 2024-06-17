@@ -11,8 +11,8 @@ namespace detail {
 #ifdef ARDUINO
 inline void append(const uint8_t &value, Stream &container,
                    std::size_t &index) {
-  container.write(value);
-  index += 1;
+    container.write(value);
+    index += 1;
 }
 #endif
 
