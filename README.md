@@ -1164,11 +1164,11 @@ int main() {
 ```
 ### Aligned Memory Access
 
-The Alpaca library, by default, utilizes unaligned memory access, as this is permitted on the x86_64 architecture. 
-However, certain architectures, such as the Arm Cortex-M3, M4, and M33, require aligned memory access for 32-bit 
+The Alpaca library, by default, utilizes unaligned memory access, as this is permitted on the x86_64 architecture.
+However, certain architectures, such as the Arm Cortex-M3, M4, and M33, require aligned memory access for 32-bit
 and 64-bit data types.
 
-For architectures where aligned memory access is necessary, the Alpaca library includes the 
+For architectures where aligned memory access is necessary, the Alpaca library includes the
 ```options::force_aligned_access``` option.
 When this option is enabled, the library will not perform unaligned accesses and will use ```memcpy``` instead.
 
