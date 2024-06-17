@@ -24,8 +24,9 @@
 #include <alpaca/detail/types/unique_ptr.h>
 #include <alpaca/detail/types/variant.h>
 #include <alpaca/detail/types/vector.h>
-#if defined(ALPACA_INCLUDE_TEMPERATURE_FIELD)
 #include <alpaca/detail/types/glm_vector.h>
+#if defined(ALPACA_INCLUDE_TEMPERATURE_FIELD)
+#include <alpaca/detail/types/temperature.h>
 #endif
 #include <alpaca/detail/variable_length_encoding.h>
 #include <cassert>
