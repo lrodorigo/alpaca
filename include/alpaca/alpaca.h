@@ -22,7 +22,7 @@
 #include <alpaca/detail/types/string.h>
 #include <alpaca/detail/types/tuple.h>
 #include <alpaca/detail/types/unique_ptr.h>
-#include <alpaca/detail/types/variant.h>
+//#include <alpaca/detail/types/variant.h>
 #include <alpaca/detail/types/vector.h>
 #include <alpaca/detail/types/glm_vector.h>
 #if defined(ALPACA_INCLUDE_TEMPERATURE_FIELD)
