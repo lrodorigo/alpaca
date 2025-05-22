@@ -1,14 +1,18 @@
 #pragma once
 #include <array>
 #include <fstream>
-#include <system_error>
 #include <vector>
+
+#ifdef ARDUINO
+#include "Stream.h"
+#endif
 
 namespace alpaca {
 
 namespace detail {
 
 #ifdef ARDUINO
+
 inline void append(const uint8_t &value, Stream &container,
                    std::size_t &index) {
     container.write(value);
@@ -16,8 +20,12 @@ inline void append(const uint8_t &value, Stream &container,
 }
 #endif
 
-static inline void append(const uint8_t &value, std::vector<uint8_t> &container,
-                          std::size_t &index) {
+static inline void append(const uint8_t &value, std::vector<uint8_t> &container, std::size_t &index) {
+  container.push_back(value);
+  index += 1;
+}
+
+static inline void append(const uint8_t &value, std::vector<char> &container, std::size_t &index) {
   container.push_back(value);
   index += 1;
 }
